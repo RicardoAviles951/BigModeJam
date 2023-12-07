@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 9005538827465059392}
   - component: {fileID: 9005538827465059399}
   - component: {fileID: 9005538827465059398}
-  - component: {fileID: 9005538827465059393}
   m_Layer: 0
   m_Name: BodyGeo
   m_TagString: Untagged
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 6b911390c5825014e8377183a7837d3f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,20 +84,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &9005538827465059393
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9005538827465059395}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9005538827589655851
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +96,8 @@ GameObject:
   - component: {fileID: 9005538827589655854}
   - component: {fileID: 9005538827589655848}
   - component: {fileID: 9005538827589655852}
-  m_Layer: 0
+  - component: {fileID: 6926335005080522588}
+  m_Layer: 6
   m_Name: Crowdling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +112,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9005538827589655851}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.143, y: 0.25, z: 0}
+  m_LocalPosition: {x: 0.302, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -187,6 +173,20 @@ MonoBehaviour:
   normalSpeed: 2
   maxSpeed: 6
   ketchupDistance: 6
+--- !u!136 &6926335005080522588
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9005538827589655851}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9005538828600090672
 GameObject:
   m_ObjectHideFlags: 0
