@@ -6,4 +6,5 @@ public abstract class AbilityBase
 {
     public abstract void Activate(AbilityManager ability);
     public abstract void UpdateAbility(AbilityManager ability);
+    public abstract void SubscribedEvent(AbilityManager ability, CrowdlingBrain crowdling);
 }
