@@ -15,6 +15,7 @@ public class AbilityManager : MonoBehaviour
     public InfluenceAbility InfluenceAbility    = new InfluenceAbility();
     public AngerAbility angerAbility            = new AngerAbility();
     public JoyAbility joyAbility                = new JoyAbility();
+    private GameObject radius;
 
     //Reference to input system
     [HideInInspector] public StarterAssetsInputs input;
@@ -30,9 +31,8 @@ public class AbilityManager : MonoBehaviour
     public float cooldown;
     public float afflictionRadius = 0;
     public float maxRadius = 5;
-    public float minRadius = 0;
-    public float radiusGrowSpeed = 2f;
-    //private float shrinkSpeed = 4f;
+    public float minRadius = 1;
+    public float radiusGrowSpeed = 1f;
     public bool canAfflict = false;
    
 
@@ -40,6 +40,7 @@ public class AbilityManager : MonoBehaviour
     public LayerMask layer;
     public SphereCollider sphereCollider;
     public Detector detector;
+    public VisManager visManager;
     private void Awake()
     {
         currentAbility = InfluenceAbility;
@@ -55,8 +56,8 @@ public class AbilityManager : MonoBehaviour
         input          = GetComponent<StarterAssetsInputs>();
         sphereCollider = GetComponentInChildren<SphereCollider>();
         particles      = GetComponent<ParticleSystem>();
-        
-           
+        radius         = GameObject.Find("VisualRadius");
+        visManager     = GetComponentInChildren<VisManager>(); 
         self           = gameObject.transform;
     }
 
@@ -65,8 +66,7 @@ public class AbilityManager : MonoBehaviour
     {
         currentAbility.UpdateAbility(this);
         Afflict();
-        var main = particles.main;
-        main.startColor = color;
+        visManager.color = color;
         if (input.restart)
         {
             RestartScene();
@@ -107,7 +107,11 @@ public class AbilityManager : MonoBehaviour
            canAfflict = false;
            afflictionRadius = minRadius;
         }
+        //Vector3 scaleFactor = new Vector3(afflictionRadius, afflictionRadius, afflictionRadius);
+        //radius.transform.localScale = scaleFactor*2f;
         sphereCollider.radius = afflictionRadius;
+        visManager.radius = afflictionRadius;
+        
     }
 
 
