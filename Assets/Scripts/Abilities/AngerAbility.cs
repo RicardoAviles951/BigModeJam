@@ -12,6 +12,9 @@ public class AngerAbility : AbilityBase
         Debug.Log("ANGRY: Currently Angry!!!");
         ability.color = Color.red;
         color = ability.color;
+        ability.visManager.noiseFrequency   = 0.5f;
+        ability.visManager.noiseStrength    = 2f;
+        ability.visManager.noiseScrollSpeed = 2;
 
         
     }
@@ -27,6 +30,7 @@ public class AngerAbility : AbilityBase
     {
         if (ability.input._switch)
         {
+            ResetNoise(ability);
             ability.ChangeAbility(ability.joyAbility);
         }
     }
@@ -39,6 +43,11 @@ public class AngerAbility : AbilityBase
         crowdling.SwitchState(crowdling.flingState);
     }
 
-    
+    private void ResetNoise(AbilityManager ability)
+    {
+        ability.visManager.noiseFrequency   = 0;
+        ability.visManager.noiseStrength    = 0;
+        ability.visManager.noiseScrollSpeed = 0;
+    }
 
 }
