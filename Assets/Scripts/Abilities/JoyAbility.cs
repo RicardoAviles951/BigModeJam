@@ -15,6 +15,7 @@ public class JoyAbility : AbilityBase
     public override void SubscribedEvent(AbilityManager ability, CrowdlingBrain crowdling)
     {
         crowdling.ChangeColor(ability.color);
+        crowdling.MoodSound(crowdling.joySound, .5f);
         crowdling.currentMood = CrowdlingBrain.mood.joyful;
         ability.StartCoroutine(Delay(crowdling));
     }

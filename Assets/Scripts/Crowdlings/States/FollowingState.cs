@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FollowingState : CrowdlingBaseState
@@ -15,6 +16,8 @@ public class FollowingState : CrowdlingBaseState
     public override void EnterState(CrowdlingBrain crowdling)
     {
         Debug.Log("Follow State: Following something I think...");
+        AudioManager.instance.PlaySoundEffect(crowdling.alertSound);
+        AlertAnim(crowdling);
         self   = crowdling.gameObject.transform;
         target = GameObject.FindWithTag("Follow Point").gameObject.transform;
 
@@ -65,5 +68,10 @@ public class FollowingState : CrowdlingBaseState
     private void MoveToTarget(Transform target,CrowdlingBrain crowdling)
     {
         crowdling.rb.velocity = new Vector3(normalizedDir.x * moveSpeed, 0, normalizedDir.z * moveSpeed);
+    }
+
+    private void AlertAnim(CrowdlingBrain crowdling)
+    {
+        crowdling.anim.SetTrigger("alert");
     }
 }
