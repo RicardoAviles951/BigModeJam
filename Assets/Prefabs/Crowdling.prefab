@@ -169,10 +169,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6788837a24c0c9e4697efc72a19aa334, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentMood: 0
   rb: {fileID: 0}
+  afflicted: 0
+  anim: {fileID: 0}
   normalSpeed: 2
   maxSpeed: 6
   ketchupDistance: 6
+  alertSound: {fileID: 8300000, guid: f9065f329f6c41b49a416306c1d19ed6, type: 3}
+  flingForce: 20
+  angrySound: {fileID: 8300000, guid: 1124cf873dfb18d4c8357f13393a3aeb, type: 3}
+  joySound: {fileID: 8300000, guid: 3a26f23cbdde2494eadc43408e5efef3, type: 3}
+  flingSound: {fileID: 8300000, guid: 8cbffaba12aa50b4e88444c40e1caf56, type: 3}
 --- !u!136 &6926335005080522588
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -23,19 +23,25 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
     [HideInInspector] public Rigidbody rb;
     private Renderer renderer;
     [HideInInspector] public bool afflicted = false;
+    [HideInInspector] public Animator anim;
 
     [Header("Following Around")]
     public float normalSpeed = 2.0f;
     public float maxSpeed = 6.0f;
     public float ketchupDistance = 6.0f;
+    public AudioClip alertSound;
 
     [Header("Flinging Around")]
     public float flingForce = 20f;
+    public AudioClip angrySound;
+    public AudioClip joySound;
+    public AudioClip flingSound;
 
     // Start is called before the first frame update
     void Start()
     {
         renderer = GetComponentInChildren<Renderer>();
+        anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
         currentState = waitingState;
         currentMood = mood.neutral;
@@ -61,8 +67,17 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
 
     public void SwitchState(CrowdlingBaseState crowdling)
     {
-        currentState = crowdling;
-        crowdling.EnterState(this);
+        if(currentState != crowdling)
+        {
+            currentState = crowdling;
+            crowdling.EnterState(this);
+        }
+        else
+        {
+            Debug.Log("Already in this state: " + currentState);    
+        }
+        
+        
     }
 
     public void ChangeColor(Color color)
@@ -70,6 +85,13 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
         renderer.material.color = color;
         Debug.Log("AFFLICTED");
     }
+
+    public void MoodSound(AudioClip sound, float vol = 1)
+    {
+        AudioManager.instance.PlaySoundEffect(sound, vol);
+        anim.SetTrigger("alert");
+    }
+
 
     public CrowdlingBaseState GetState()
     {

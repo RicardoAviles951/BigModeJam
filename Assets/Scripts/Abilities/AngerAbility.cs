@@ -22,6 +22,7 @@ public class AngerAbility : AbilityBase
     public override void SubscribedEvent(AbilityManager ability, CrowdlingBrain crowdling)
     {
         crowdling.ChangeColor(color);
+        crowdling.MoodSound(crowdling.angrySound);
         crowdling.currentMood = CrowdlingBrain.mood.angry;
         ability.StartCoroutine(Delay(crowdling));
     }
