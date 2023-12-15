@@ -259,11 +259,33 @@
                 },
                 {
                     "name": "",
+                    "id": "9cfdc30c-087e-44ff-94d6-427bd674b4ff",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Fire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "100fc137-ea1e-4268-b149-f634c2f904e1",
                     "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "KeyboardMouse",
+                    "action": "Switch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e1c7fa6e-4923-4edc-bce3-9c2ec465d957",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
                     "action": "Switch",
                     "isComposite": false,
                     "isPartOfComposite": false

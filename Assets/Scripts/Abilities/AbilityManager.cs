@@ -27,8 +27,6 @@ public class AbilityManager : MonoBehaviour
     
 
     //Ability variables
-    public float duration;
-    public float cooldown;
     public float afflictionRadius = 0;
     public float maxRadius = 5;
     public float minRadius = 1;
@@ -38,9 +36,9 @@ public class AbilityManager : MonoBehaviour
 
 
     public LayerMask layer;
-    public SphereCollider sphereCollider;
-    public Detector detector;
-    public VisManager visManager;
+    [HideInInspector] public SphereCollider sphereCollider;
+    [HideInInspector] public Detector detector;
+    [HideInInspector] public VisManager visManager;
     private void Awake()
     {
         currentAbility = InfluenceAbility;
