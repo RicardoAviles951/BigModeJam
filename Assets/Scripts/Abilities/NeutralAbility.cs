@@ -5,6 +5,7 @@ using UnityEngine;
 public class NeutralAbility : AbilityBase
 {
     private Color color = Color.black;
+    private Color neutralColor = Color.white;
     public override void Activate(AbilityManager ability)
     {
         Debug.Log("NEUTRAL: Not feeling much...");
@@ -13,7 +14,7 @@ public class NeutralAbility : AbilityBase
 
     public override void SubscribedEvent(AbilityManager ability, CrowdlingBrain crowdling)
     {
-        crowdling.ChangeColor(ability.color);
+        crowdling.ChangeColor(neutralColor);
         crowdling.currentMood = CrowdlingBrain.mood.neutral;
         crowdling.SwitchState(crowdling.waitingState);
     }

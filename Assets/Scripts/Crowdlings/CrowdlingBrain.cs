@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CrowdlingBrain : MonoBehaviour, IAfflictable
 {
@@ -30,12 +31,14 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
     public float maxSpeed = 6.0f;
     public float ketchupDistance = 6.0f;
     public AudioClip alertSound;
+    [HideInInspector] public NavMeshAgent navAgent;
 
     [Header("Flinging Around")]
     public float flingForce = 20f;
     public AudioClip angrySound;
     public AudioClip joySound;
     public AudioClip flingSound;
+    public float stunDuration;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +46,7 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
         renderer = GetComponentInChildren<Renderer>();
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        navAgent = GetComponent<NavMeshAgent>();
         currentState = waitingState;
         currentMood = mood.neutral;
         currentState.EnterState(this);
@@ -70,6 +74,7 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
         if(currentState != crowdling)
         {
             currentState = crowdling;
+            ToggleNav(false);
             crowdling.EnterState(this);
         }
         else
@@ -96,6 +101,11 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
     public CrowdlingBaseState GetState()
     {
         return currentState;
+    }
+
+    public void ToggleNav(bool nav)
+    {
+        navAgent.enabled = nav;
     }
     
 }

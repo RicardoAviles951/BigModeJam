@@ -12,9 +12,9 @@ public class AngerAbility : AbilityBase
         Debug.Log("ANGRY: Currently Angry!!!");
         ability.color = Color.red;
         color = ability.color;
-        ability.visManager.noiseFrequency   = 0.5f;
-        ability.visManager.noiseStrength    = 2f;
-        ability.visManager.noiseScrollSpeed = 2;
+        ability.visManager.noiseFrequency   = 4f;
+        ability.visManager.noiseStrength    = 4f;
+        ability.visManager.noiseScrollSpeed = 0;
 
         
     }

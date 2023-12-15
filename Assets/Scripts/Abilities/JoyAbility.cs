@@ -9,6 +9,7 @@ public class JoyAbility : AbilityBase
     {
         Debug.Log("JOY: Currently Joyful!");
         ability.color = color;
+        ability.visManager.noiseStrength = 2;
     }
 
 
@@ -24,6 +25,7 @@ public class JoyAbility : AbilityBase
     {
         if (ability.input._switch)
         {
+            ResetNoise(ability);
             ability.ChangeAbility(ability.neutralAbility);
         }
     }
@@ -33,5 +35,12 @@ public class JoyAbility : AbilityBase
         Debug.Log("Firing...");
         yield return new WaitForSeconds(1);
         crowdling.SwitchState(crowdling.flingState);
+    }
+
+    private void ResetNoise(AbilityManager ability)
+    {
+        ability.visManager.noiseFrequency = 0;
+        ability.visManager.noiseStrength = 0;
+        ability.visManager.noiseScrollSpeed = 0;
     }
 }

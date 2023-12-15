@@ -26,9 +26,55 @@ public class FollowingState : CrowdlingBaseState
         {
             crowdling.SwitchState(crowdling.waitingState);
         }
+
+        crowdling.navAgent.enabled = true;
     }
 
     public override void UpdateState(CrowdlingBrain crowdling)
+    {
+        distanceBetween = target.position - self.position;
+        normalizedDir = distanceBetween.normalized;
+        Vector3 lookDir = new Vector3(normalizedDir.x, 0, normalizedDir.z);
+        if (distanceBetween.magnitude > crowdling.ketchupDistance)
+        {
+            moveSpeed = crowdling.maxSpeed;
+        }
+        else
+        {
+            moveSpeed = crowdling.normalSpeed;
+        }
+        if (distanceBetween.magnitude >= maxDistance)
+        {
+            MoveToTarget(target, crowdling);
+        }
+        else
+        {
+            move = false;
+        }
+        self.rotation = Quaternion.LookRotation(lookDir);
+        crowdling.navAgent.speed = moveSpeed;
+    }
+
+    public override void UpdatePhysics(CrowdlingBrain crowdling)
+    {
+        //if (move)
+        //{
+        //    MoveToTarget(target, crowdling);
+        //}
+    }
+
+    public override void OnCollision(Collision collision, CrowdlingBrain crowdling)
+    {
+
+    }
+
+    private void MoveToTarget(Transform target,CrowdlingBrain crowdling)
+    {
+        crowdling.navAgent.SetDestination(target.position);
+        //crowdling.rb.velocity = new Vector3(normalizedDir.x * moveSpeed, 0, normalizedDir.z * moveSpeed);
+    }
+
+    private void OldMovement(CrowdlingBrain crowdling)
     {
         distanceBetween = target.position - self.position;
         normalizedDir = distanceBetween.normalized;
@@ -50,24 +96,6 @@ public class FollowingState : CrowdlingBaseState
             move = false;
         }
         self.rotation = Quaternion.LookRotation(lookDir);
-    }
-
-    public override void UpdatePhysics(CrowdlingBrain crowdling)
-    {
-        if (move)
-        {
-            MoveToTarget(target, crowdling);
-        }
-    }
-
-    public override void OnCollision(Collision collision, CrowdlingBrain crowdling)
-    {
-
-    }
-
-    private void MoveToTarget(Transform target,CrowdlingBrain crowdling)
-    {
-        crowdling.rb.velocity = new Vector3(normalizedDir.x * moveSpeed, 0, normalizedDir.z * moveSpeed);
     }
 
     private void AlertAnim(CrowdlingBrain crowdling)
