@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Switch",
+                    "name": "Next",
                     "type": "Button",
                     "id": "e245720d-d646-4efd-99d1-7d4e460a3bcc",
                     "expectedControlType": "Button",
@@ -270,23 +270,34 @@
                 },
                 {
                     "name": "",
-                    "id": "100fc137-ea1e-4268-b149-f634c2f904e1",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "KeyboardMouse",
-                    "action": "Switch",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "e1c7fa6e-4923-4edc-bce3-9c2ec465d957",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Switch",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "30cfb7fe-12c3-49d2-ab01-ebb959d512a9",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Next",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d8fb17e-3dfa-4a61-897f-4ced3d1b8da9",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Next",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

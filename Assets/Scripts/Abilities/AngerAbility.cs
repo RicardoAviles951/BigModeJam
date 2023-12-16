@@ -6,15 +6,23 @@ using UnityEngine;
 public class AngerAbility : AbilityBase
 {
     private Color color;
+    private string name;
    
     public override void Activate(AbilityManager ability)
     {
-        Debug.Log("ANGRY: Currently Angry!!!");
+        ability.moodName = "RAGE";
+
+        Debug.Log("Mood : " + ability.moodName);
         ability.color = Color.red;
+        
+        name = ability.moodName;
         color = ability.color;
+        //ability.moodRelay.ChangeText(name, color);
+        ability.ChangeName(name,color, ability.rageFont);
         ability.visManager.noiseFrequency   = 4f;
         ability.visManager.noiseStrength    = 4f;
         ability.visManager.noiseScrollSpeed = 0;
+
 
         
     }
@@ -29,11 +37,13 @@ public class AngerAbility : AbilityBase
 
     public override void UpdateAbility(AbilityManager ability)
     {
-        if (ability.input._switch)
+        if (ability.input.next)
         {
             ResetNoise(ability);
             ability.ChangeAbility(ability.joyAbility);
         }
+
+
     }
 
 

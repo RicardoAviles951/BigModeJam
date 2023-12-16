@@ -13,6 +13,7 @@ public class CrowdlingBrain : MonoBehaviour, IAfflictable
         joyful
     }
 
+
     public mood currentMood;
     CrowdlingBaseState currentState;
     public WaitingState waitingState     = new WaitingState();
