@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 using UnityEngine.SceneManagement;
 
 
@@ -25,6 +26,7 @@ public class AbilityManager : MonoBehaviour
     private Transform self;
     private ParticleSystem particles;
     
+    
 
     //Ability variables
     public float afflictionRadius = 0;
@@ -32,8 +34,16 @@ public class AbilityManager : MonoBehaviour
     public float minRadius = 1;
     public float radiusGrowSpeed = 1f;
     public bool canAfflict = false;
-   
+    public string moodName;
+    public Font rageFont;
+    public Font joyFont;
+    public Font defaultFont;
 
+    public AudioClip switchClip;
+
+    [HideInInspector] public bool switched;
+
+    public static event Action<MoodInfo> MoodChanged;
 
     public LayerMask layer;
     [HideInInspector] public SphereCollider sphereCollider;
@@ -57,11 +67,13 @@ public class AbilityManager : MonoBehaviour
         radius         = GameObject.Find("VisualRadius");
         visManager     = GetComponentInChildren<VisManager>(); 
         self           = gameObject.transform;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         currentAbility.UpdateAbility(this);
         Afflict();
         visManager.color = color;
@@ -69,11 +81,17 @@ public class AbilityManager : MonoBehaviour
         {
             RestartScene();
         }
+        
+        if(input.next)
+        {
+            input.next = false;
+        }
     }
 
     public void ChangeAbility(AbilityBase ability)
     {
         currentAbility = ability;
+        AudioManager.instance.PlaySoundEffect(switchClip);
         ability.Activate(this);
     }
 
@@ -139,5 +157,10 @@ public class AbilityManager : MonoBehaviour
 
         // Load the current scene again to restart it
         SceneManager.LoadScene(currentSceneName);
+    }
+
+   public void ChangeName(string name, Color color, Font font)
+    {
+        MoodChanged?.Invoke(new MoodInfo(name, color, font));
     }
 }

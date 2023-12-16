@@ -13,7 +13,7 @@ namespace StarterAssets
 		public bool jump;
 		public bool sprint;
 		public bool fire;
-		public bool _switch;
+		public bool next;
 		public bool restart;
 
 		[Header("Movement Settings")]
@@ -52,9 +52,9 @@ namespace StarterAssets
 			FireInput(value.isPressed);
 		}
 
-		public void OnSwitch(InputValue value)
+		public void OnNext(InputValue value)
 		{
-			SwitchInput(value.isPressed);
+			NextInput(value.isPressed);
 		}
 		public void OnRestart(InputValue value)
 		{
@@ -86,9 +86,9 @@ namespace StarterAssets
 		{
 			fire = newFireState;
 		}
-		public void SwitchInput(bool newSwitchState)
+		public void NextInput(bool newNextState)
 		{
-			_switch = newSwitchState;
+			next = newNextState;
 		}
 		public void RestartInput(bool newRestartState)
 		{

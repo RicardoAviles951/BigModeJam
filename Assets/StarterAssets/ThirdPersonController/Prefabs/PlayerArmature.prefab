@@ -1241,7 +1241,7 @@ MonoBehaviour:
   jump: 0
   sprint: 0
   fire: 0
-  _switch: 0
+  next: 0
   restart: 0
   analogMovement: 0
   cursorLocked: 1
@@ -1359,13 +1359,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 0}
   color: {r: 0, g: 0, b: 0, a: 0}
-  duration: 0
-  cooldown: 0
   afflictionRadius: 0
-  maxRadius: 5
+  maxRadius: 6
   minRadius: 1
   radiusGrowSpeed: 2
   canAfflict: 0
+  moodName: 
+  rageFont: {fileID: 12800000, guid: afb8fe636218a2f4d9d8552e4f27912b, type: 3}
+  joyFont: {fileID: 12800000, guid: 1003bf1d9adb4754da0a83a5845d578a, type: 3}
+  defaultFont: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
+  switchClip: {fileID: 8300000, guid: ec01b2f69460596419f520b47a5c785c, type: 3}
+  switched: 0
   layer:
     serializedVersion: 2
     m_Bits: 0

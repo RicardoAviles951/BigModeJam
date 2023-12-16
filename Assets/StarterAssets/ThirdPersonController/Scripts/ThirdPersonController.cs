@@ -159,8 +159,8 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            Fire();
-            Switch();
+            
+            
         }
 
         private void LateUpdate()
@@ -212,20 +212,10 @@ namespace StarterAssets
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
         }
+
+
+
         
-        private void Fire()
-        {
-
-            
-        }
-
-        private void Switch()
-        {
-            if (_input._switch)
-            {
-                _input._switch = false;
-            }
-        }
         private void Move()
         {
             // set target speed based on move speed, sprint speed and if sprint is pressed

@@ -5,10 +5,16 @@ using UnityEngine;
 public class JoyAbility : AbilityBase
 {
     Color color = Color.green;
+    string name;
     public override void Activate(AbilityManager ability)
     {
-        Debug.Log("JOY: Currently Joyful!");
+        ability.moodName = "JOY";
+        Debug.Log("Mood: " + ability.moodName);
         ability.color = color;
+
+        name = ability.moodName;
+        //ability.moodRelay.ChangeText(name, color);
+        ability.ChangeName(name, color, ability.joyFont);
         ability.visManager.noiseStrength = 2;
     }
 
@@ -23,11 +29,12 @@ public class JoyAbility : AbilityBase
 
     public override void UpdateAbility(AbilityManager ability)
     {
-        if (ability.input._switch)
+        if (ability.input.next)
         {
             ResetNoise(ability);
             ability.ChangeAbility(ability.neutralAbility);
         }
+
     }
 
     private IEnumerator Delay(CrowdlingBrain crowdling)
